@@ -1,6 +1,6 @@
 import Foundation
 
-struct Main {
+struct MPC {
 
     // MARK: - Private Property(ies).
 
