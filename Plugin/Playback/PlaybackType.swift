@@ -1,5 +1,7 @@
 import Foundation
 
 enum PlaybackType: String, Equatable {
-    case live, none, vod
+    case live
+    case unknown
+    case vod
 }
