@@ -3,15 +3,11 @@ import Foundation
 class Plugin: Object {
 
     // MARK: - Public Property(ies).
-
+    
+    unowned var module: Module
     var isEnable: Bool {
-        willSet {
-            newValue ? self.onEnable() : self.onDisable()
-        }
-    }
-
-    unowned
-    var module: Module
+        willSet { newValue ? self.onEnable() : self.onDisable() }
+    }  
 
     // MARK: - Constructor(s).
 
@@ -22,9 +18,7 @@ class Plugin: Object {
         self.onCreate()
     }
 
-    deinit {
-        self.onDestroy()
-    }
+    deinit { self.onDestroy() }
 
     // MARK: - Open Function(s).
 

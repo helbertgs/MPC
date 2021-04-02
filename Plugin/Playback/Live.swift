@@ -46,7 +46,9 @@ class Live: Plugin, Playback {
     // MARK: - Function(s).
 
     /// Begins playback of the current item.
-    func play() { }
+    func play() {
+        dispatch(command: AppCommand.play)
+    }
 
     /// Pauses playback of the current item.
     func pause() { }
