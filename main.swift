@@ -2,13 +2,9 @@ import Foundation
 
 struct MPC {
 
-    // MARK: - Private Property(ies).
-
-    private let modules: [Module]
-
     // MARK: - Constructor(s).
 
-    init(modules: [Module] = []) {
-        self.modules = modules
+    init(modules: [Module] = [ Core() ]) {
+        modules.forEach(Store.shared.add(module:))
     }
 }

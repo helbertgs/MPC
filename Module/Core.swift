@@ -2,9 +2,21 @@ import Foundation
 
 class Core: Module {
 
-    // MARK: Constructor(s).
+    // MARK: - Public Property(ies).
 
-    init() {
-        super.init(with: [Debugger.self])
+    var isHidden: Bool
+    var isEnable: Bool
+    
+    // MARK: - Constructor(s).
+
+    required init() {
+        self.isHidden = false
+        self.isEnable = true
+    }
+
+    // MARK: - Function(s).
+
+    func listen(command: Command) {
+        
     }
 }

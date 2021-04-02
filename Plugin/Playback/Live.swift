@@ -8,7 +8,7 @@ class Live: Plugin, Playback {
     var type: PlaybackType = .live
 
     /// The state of the playback.
-    var state: PlaybackState = .unknow
+    var state: PlaybackState = .none
 
     /// Returns the current time of the item.
     var currentTime: TimeInterval = .zero
@@ -56,4 +56,10 @@ class Live: Plugin, Playback {
 
     /// Sets the current playback time to the specified time.
     func seek(to: TimeInterval) { }
+
+    // MARK: - Plugin Function(s).
+
+    override func onCreate() {
+        super.onCreate()
+    }
 }

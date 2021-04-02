@@ -41,7 +41,7 @@ protocol Playback: Plugin {
     var isMuted: Bool { get }
 
     /// The audio playback volume for the player.
-    var volume: Double = { get set }
+    var volume: Double { get set }
     
     // MARK: - Function(s).
 

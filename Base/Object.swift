@@ -1,16 +1,11 @@
 import Foundation
 
-class Object {
+public protocol Object {
+    var id: UUID { get }
+    var name: String { get }
+}
 
-// MARK: - Public Property(ies).
-
-    var id: UUID
-    var name: String
-
-    // MARK: - Constructor(s).
-
-    init(name: String) {
-        self.id = .init()
-        self.name = name
-    }    
+extension Object {
+    var id: UUID { return UUID() }
+    var name: String { return "\(Self.self)" }
 }

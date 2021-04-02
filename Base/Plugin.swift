@@ -1,6 +1,6 @@
 import Foundation
 
-class Plugin: Object, Pluggable {
+class Plugin: Object {
 
     // MARK: - Public Property(ies).
 
@@ -18,8 +18,7 @@ class Plugin: Object, Pluggable {
     required init(on module: Module) {
         self.module = module
         self.isEnable = true
-        
-        super.init(name: "\(type(of: self))")
+
         self.onCreate()
     }
 
@@ -29,21 +28,23 @@ class Plugin: Object, Pluggable {
 
     // MARK: - Open Function(s).
 
-    open func onCreate() {
-    }
+    open func onCreate() { }
 
-    open func onDestroy() {
-    }
+    open func onDestroy() { }
 
-    open func onEnable() {
-    }
+    open func onEnable() { }
 
-    open func onDisable() {
-    }
+    open func onDisable() { }
+
+    open func listen(command: Command) { }
 
     // MARK: - Public Function(s).
 
-    func get<P: Pluggable>(plugin ofType: P.Type) -> P? {
+    func get<P: Plugin>(plugin ofType: P.Type) -> P? {
         return self.module.get(plugin: ofType)
+    }
+
+    func dispatch(command: Command) {
+        self.module.listen(command: command)
     }
 }
