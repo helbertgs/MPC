@@ -36,6 +36,10 @@ final class Store {
         return self.plugin.first { type(of: $0) == ofType } as? P
     }
 
+    func get(plugins ofModule: Module.Type) -> [Plugin] {
+        return self.plugin.filter { type(of: $0.module) == ofModule }
+    }
+
     func destroy<P: Plugin>(plugin ofType: P.Type) {
         self.plugin.removeAll { type(of: $0) == ofType }
     }

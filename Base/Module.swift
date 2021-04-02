@@ -18,6 +18,7 @@ protocol Module: class, Object {
     func destroy(plugin ofType: Plugin.Type)
     func get<P: Plugin>(plugin ofType: P.Type) -> P?
     func listen(command: Command)
+    func broadcast(command: Command)
 }
 
 extension Module {
@@ -36,5 +37,12 @@ extension Module {
 
     func get<P: Plugin>(plugin ofType: P.Type) -> P? {
         return Store.shared.get(plugin: ofType)
+    }
+
+    func broadcast(command: Command) {
+        Store
+            .shared
+            .get(plugins: Self.self)
+            .forEach { $0.listen(command: command) }
     }
 }
